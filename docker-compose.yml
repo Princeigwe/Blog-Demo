@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: blog_postgres
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  
+  web:
+    container_name: blog_web
+    build: .
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    volumes:
+      - .:/usr/src/app # mounting the current directory inside the container
+      - /usr/src/app/node_modules # mounting node_modules inside the container
+    depends_on:
+      - db
