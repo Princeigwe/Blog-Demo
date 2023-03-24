@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  blog_demo_deployment_process:
+    docker:
+      - image: cimg/node:19.8.1
+    steps:
+      - checkout
+      - run:
+          name: npm update
+          command: sudo npm install -g npm@latest
+      
+      - run:
+          name: run automated tests
+          command: npm run test
+
+
+workflows:
+  blog-demo: 
+    jobs:
+      - blog_demo_deployment_process
