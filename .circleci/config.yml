@@ -27,12 +27,13 @@ jobs:
       - run:
           name: Build and Push Docker Image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/blog-demo:latest .
-            docker push $DOCKERHUB_USERNAME/blog-demo:latest
+            docker build -t princeigwe/blog-demo:latest .
+            docker push princeigwe/blog-demo:latest
 
 
 workflows:
   blog-demo: 
     jobs:
       - blog_demo_deployment_process:
-          context: DOCKERHUB_AUTH
+          context: 
+            - DOCKERHUB_AUTH
