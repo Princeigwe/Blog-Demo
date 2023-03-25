@@ -11,7 +11,7 @@ jobs:
       
       - run:
           name: run automated tests
-          command: npm run test
+          command: npm test
 
 
 workflows:
