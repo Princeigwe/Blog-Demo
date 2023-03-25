@@ -3,14 +3,12 @@ jobs:
   blog_demo_deployment_process:
     docker:
       - image: cimg/node:19.8.1
+    working_directory: ~/blog-demo
     steps:
       - checkout
       - run:
           name: npm update
           command: sudo npm install -g npm@latest
-      - run: 
-          name: install Jest
-          command: sudo npm install -g jest
           
       - run:
           name: run automated tests
