@@ -8,7 +8,10 @@ jobs:
       - run:
           name: npm update
           command: sudo npm install -g npm@latest
-      
+      - run: 
+          name: install Jest
+          command: npm install -g jest
+          
       - run:
           name: run automated tests
           command: npm test
