@@ -9,6 +9,10 @@ jobs:
 
     steps:
       - checkout
+      
+      - setup_remote_docker:
+          docker_layer_caching: true
+
       - run:
           name: npm update
           command: sudo npm install -g npm@latest
@@ -19,6 +23,12 @@ jobs:
       - run:
           name: run automated tests
           command: npm test
+      
+      - run:
+          name: Build and Push Docker Image
+          command: |
+            docker build -t $DOCKERHUB_USERNAME/blog-demo:latest .
+            docker push $DOCKERHUB_USERNAME/blog-demo:latest
 
 
 workflows:
