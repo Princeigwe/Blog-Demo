@@ -3,6 +3,10 @@ jobs:
   blog_demo_deployment_process:
     docker:
       - image: cimg/node:19.8.1
+        auth: 
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
     steps:
       - checkout
       - run:
@@ -20,4 +24,5 @@ jobs:
 workflows:
   blog-demo: 
     jobs:
-      - blog_demo_deployment_process
+      - blog_demo_deployment_process:
+          context: DOCKERHUB_AUTH
