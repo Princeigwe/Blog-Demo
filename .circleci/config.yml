@@ -28,7 +28,7 @@ jobs:
           name: Build and Push Docker Image
           command: |
             docker build -t $DOCKERHUB_USERNAME/blog-demo:latest .
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD docker.io
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD docker.io
             docker push $DOCKERHUB_USERNAME/blog-demo:latest
 
 
