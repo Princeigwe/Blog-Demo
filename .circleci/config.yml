@@ -27,6 +27,7 @@ jobs:
       - run:
           name: Build and Push Docker Image
           command: |
+            docker login
             docker build -t $DOCKERHUB_USERNAME/blog-demo:latest .
             docker push $DOCKERHUB_USERNAME/blog-demo:latest
 
